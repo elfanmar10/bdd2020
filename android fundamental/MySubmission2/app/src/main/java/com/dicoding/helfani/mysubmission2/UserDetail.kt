@@ -21,6 +21,7 @@ class UserDetail : AppCompatActivity() {
     companion object {
         val TAG = UserDetail::class.java.simpleName
         const val EXTRA_USER = "extra_user"
+		const val GITHUB_TOKEN = "BuildConfig.GITHUB_TOKEN"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +58,7 @@ class UserDetail : AppCompatActivity() {
 
         val client = AsyncHttpClient()
         val url = "https://api.github.com/users/$username"
-        client.addHeader("Authorization", "token c41a271b7c497cc19dc13c70559ce3aedcdf61b4")
+        client.addHeader("Authorization", GITHUB_TOKEN)
         client.addHeader("User-Agent", "request")
 
         progressBarDetail.visibility = View.VISIBLE

@@ -25,6 +25,7 @@ class FollowerFragment : Fragment() {
    companion object {
         private val ARG_USERNAME ="username"
         val TAG = MainActivity::class.java.simpleName
+		const val GITHUB_TOKEN = "BuildConfig.GITHUB_TOKEN"
 
         fun newInstance(username: String?): FollowerFragment {
             val fragment = FollowerFragment()
@@ -69,7 +70,7 @@ class FollowerFragment : Fragment() {
 
         val client = AsyncHttpClient()
         val url = "https://api.github.com/users/$username/followers"
-        client.addHeader("Authorization", "token c41a271b7c497cc19dc13c70559ce3aedcdf61b4")
+        client.addHeader("Authorization", GITHUB_TOKEN)
         client.addHeader("User-Agent", "request")
         progressBarFollower.visibility = View.VISIBLE
 

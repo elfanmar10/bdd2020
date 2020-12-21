@@ -13,13 +13,18 @@ import java.lang.Exception
 
 class MainViewModel: ViewModel() {
 
+    companion object {
+        
+		const val GITHUB_TOKEN = "BuildConfig.GITHUB_TOKEN"
+	}
+
     val listUsers = MutableLiveData<ArrayList<UserItems>>()
 
     fun setUser(username: String) {
         val listUser = ArrayList<UserItems>()
         val client = AsyncHttpClient()
         val url = "https://api.github.com/search/users?q=$username"
-        client.addHeader("Authorization", "token c41a271b7c497cc19dc13c70559ce3aedcdf61b4")
+        client.addHeader("Authorization", GITHUB_TOKEN)
         client.addHeader("User-Agent", "request")
 
         client.get(url, object : AsyncHttpResponseHandler() {
