@@ -1,6 +1,5 @@
 package com.dicoding.helfani.mysubmissionfinal.activity
 
-import com.dicoding.helfani.mysubmissionfinal.entity.UserItems
 import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
@@ -11,10 +10,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.dicoding.helfani.mysubmissionfinal.BuildConfig.GITHUB_TOKEN
 import com.dicoding.helfani.mysubmissionfinal.R
 import com.dicoding.helfani.mysubmissionfinal.adapter.SectionsPagerAdapter
 import com.dicoding.helfani.mysubmissionfinal.db.DatabaseContract.UserColumns
 import com.dicoding.helfani.mysubmissionfinal.db.DatabaseContract.UserColumns.Companion.CONTENT_URI
+import com.dicoding.helfani.mysubmissionfinal.entity.UserItems
 import com.dicoding.helfani.mysubmissionfinal.helper.MappingHelper
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
@@ -35,7 +36,6 @@ class UserDetail : AppCompatActivity() {
     companion object {
         val TAG = UserDetail::class.java.simpleName
         const val EXTRA_USER = "extra_user"
-        const val  GITHUB_TOKEN = "BuildConfig.GITHUB_TOKEN"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,12 +68,14 @@ class UserDetail : AppCompatActivity() {
 
         val isFav = contentResolver.query(uriWithid, null, null, null, null)
 
-        if (isFav != null) {
-            user = MappingHelper.mapCursorToObject(isFav)
-            isFav.close()
-            statusFavoriteUser = true
-            setStatusFavorite(statusFavoriteUser)
-        }
+       if (isFav != null && isFav.moveToFirst()) {
+           user = MappingHelper.mapCursorToObject(isFav)
+           isFav.close()
+           statusFavoriteUser = true
+           setStatusFavorite(statusFavoriteUser)
+
+       }
+
         getDetailUser(user?.username)
     }
 
@@ -151,6 +153,7 @@ class UserDetail : AppCompatActivity() {
                                 Toast.LENGTH_SHORT
                             ).show()
 
+
                         }  else {
                             // Gunakan uriWithId untuk delete
                             // content://com.dicoding.helfani.mysubmissionfinal/favorite/id
@@ -162,6 +165,7 @@ class UserDetail : AppCompatActivity() {
                                 "User dihapus dari favorit",
                                 Toast.LENGTH_SHORT
                             ).show()
+
                         }
                     }
 

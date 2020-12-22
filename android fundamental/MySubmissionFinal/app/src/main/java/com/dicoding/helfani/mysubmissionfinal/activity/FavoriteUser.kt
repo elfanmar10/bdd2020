@@ -1,6 +1,5 @@
 package com.dicoding.helfani.mysubmissionfinal.activity
 
-import com.dicoding.helfani.mysubmissionfinal.entity.UserItems
 import android.content.Intent
 import android.database.ContentObserver
 import android.os.Bundle
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.helfani.mysubmissionfinal.R
 import com.dicoding.helfani.mysubmissionfinal.adapter.FavoriteAdapter
 import com.dicoding.helfani.mysubmissionfinal.db.DatabaseContract.UserColumns.Companion.CONTENT_URI
+import com.dicoding.helfani.mysubmissionfinal.entity.UserItems
 import com.dicoding.helfani.mysubmissionfinal.helper.MappingHelper
 import kotlinx.android.synthetic.main.activity_favorite_user.*
 import kotlinx.coroutines.Dispatchers

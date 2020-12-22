@@ -1,6 +1,5 @@
 package com.dicoding.helfani.consumerapp.activity
 
-import com.dicoding.helfani.consumerapp.entity.UserItems
 import android.content.Intent
 import android.database.ContentObserver
 import android.os.Bundle
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.helfani.consumerapp.R
 import com.dicoding.helfani.consumerapp.adapter.FavoriteAdapter
 import com.dicoding.helfani.consumerapp.db.DatabaseContract.UserColumns.Companion.CONTENT_URI
+import com.dicoding.helfani.consumerapp.entity.UserItems
 import com.dicoding.helfani.consumerapp.helper.MappingHelper
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers

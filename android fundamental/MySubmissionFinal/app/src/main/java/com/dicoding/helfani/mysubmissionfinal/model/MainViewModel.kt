@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.dicoding.helfani.mysubmissionfinal.BuildConfig.GITHUB_TOKEN
 import com.dicoding.helfani.mysubmissionfinal.activity.MainActivity
 import com.dicoding.helfani.mysubmissionfinal.entity.UserItems
 import com.loopj.android.http.AsyncHttpClient
@@ -13,9 +14,6 @@ import org.json.JSONObject
 
 class MainViewModel: ViewModel() {
 
-    companion object {
-        const val  GITHUB_TOKEN = "BuildConfig.GITHUB_TOKEN"
-    }
 
     val listUsers = MutableLiveData<ArrayList<UserItems>>()
 
@@ -45,6 +43,7 @@ class MainViewModel: ViewModel() {
                         val userItems = UserItems()
                         userItems.avatar = item.getString("avatar_url")
                         userItems.username = item.getString("login")
+                        userItems.id = item.getString("id")
 
                         listUser.add(userItems)
                     }

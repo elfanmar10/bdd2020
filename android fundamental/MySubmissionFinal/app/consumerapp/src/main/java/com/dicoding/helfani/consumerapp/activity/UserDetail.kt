@@ -1,6 +1,5 @@
 package com.dicoding.helfani.consumerapp.activity
 
-import com.dicoding.helfani.consumerapp.entity.UserItems
 import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
@@ -15,6 +14,7 @@ import com.dicoding.helfani.consumerapp.R
 import com.dicoding.helfani.consumerapp.adapter.SectionsPagerAdapter
 import com.dicoding.helfani.consumerapp.db.DatabaseContract
 import com.dicoding.helfani.consumerapp.db.DatabaseContract.UserColumns.Companion.CONTENT_URI
+import com.dicoding.helfani.consumerapp.entity.UserItems
 import com.dicoding.helfani.consumerapp.helper.MappingHelper
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
@@ -71,14 +71,15 @@ class UserDetail : AppCompatActivity() {
 
         val isFav = contentResolver.query(uriWithid, null, null, null, null)
 
-        if (isFav != null) {
+        if (isFav != null && isFav.moveToFirst()) {
             user = MappingHelper.mapCursorToObject(isFav)
             isFav.close()
             statusFavoriteUser = true
             setStatusFavorite(statusFavoriteUser)
-        }
-        getDetailUser(user?.username)
 
+        }
+
+        getDetailUser(user?.username)
     }
 
     private fun getDetailUser(username: String?) {

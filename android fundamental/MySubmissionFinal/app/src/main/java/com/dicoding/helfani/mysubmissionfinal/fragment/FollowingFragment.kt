@@ -1,6 +1,5 @@
 package com.dicoding.helfani.mysubmissionfinal.fragment
 
-import com.dicoding.helfani.mysubmissionfinal.entity.UserItems
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dicoding.helfani.mysubmissionfinal.BuildConfig.GITHUB_TOKEN
 import com.dicoding.helfani.mysubmissionfinal.R
 import com.dicoding.helfani.mysubmissionfinal.adapter.UserAdapter
+import com.dicoding.helfani.mysubmissionfinal.entity.UserItems
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -27,7 +28,6 @@ class FollowingFragment : Fragment() {
     companion object {
         private const val ARG_USERNAME = "username"
         val TAG = FollowingFragment::class.java.simpleName
-        const val  GITHUB_TOKEN = "BuildConfig.GITHUB_TOKEN"
 
         fun newInstance(username: String?): FollowingFragment {
             val fragment = FollowingFragment()

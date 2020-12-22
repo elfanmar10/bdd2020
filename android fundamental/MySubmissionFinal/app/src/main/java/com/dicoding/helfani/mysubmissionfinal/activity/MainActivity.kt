@@ -1,6 +1,5 @@
 package com.dicoding.helfani.mysubmissionfinal.activity
 
-import com.dicoding.helfani.mysubmissionfinal.entity.UserItems
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
@@ -13,9 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.helfani.mysubmissionfinal.model.MainViewModel
 import com.dicoding.helfani.mysubmissionfinal.R
-import com.dicoding.helfani.mysubmissionfinal.adapter.UserAdapter
+import com.dicoding.helfani.mysubmissionfinal.adapter.FavoriteAdapter
+import com.dicoding.helfani.mysubmissionfinal.entity.UserItems
+import com.dicoding.helfani.mysubmissionfinal.model.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val TAG = MainActivity::class.java.simpleName
     }
 
-    private lateinit var adapter: UserAdapter
+    private lateinit var adapter: FavoriteAdapter
 
     private lateinit var mainViewModel: MainViewModel
 
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = UserAdapter()
+        adapter = FavoriteAdapter(this)
         adapter.notifyDataSetChanged()
 
         rvUser.layoutManager = LinearLayoutManager(this)
@@ -45,13 +45,15 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.getUser().observe(this, Observer { userItems ->
             if (userItems != null) {
                 tv_description.visibility = View.GONE
-                adapter.setData(userItems)
+                //adapter.setData(userItems)
+                adapter.listUser = userItems
+
                 showLoading(false)
             }
 
         })
 
-         adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback {
+         adapter.setOnItemClickCallback(object : FavoriteAdapter.OnItemClickCallback {
             override fun onItemClicked(data: UserItems) {
                 showSelectedUser(data)
             }
@@ -66,6 +68,7 @@ class MainActivity : AppCompatActivity() {
             progressBar.visibility = View.GONE
         }
     }
+
 
     private fun showSelectedUser(data: UserItems) {
         val detailIntent = Intent(this@MainActivity, UserDetail::class.java)

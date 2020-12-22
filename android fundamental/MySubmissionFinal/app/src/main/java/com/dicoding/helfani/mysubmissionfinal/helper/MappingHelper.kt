@@ -1,8 +1,8 @@
 package com.dicoding.helfani.mysubmissionfinal.helper
 
-import com.dicoding.helfani.mysubmissionfinal.entity.UserItems
 import android.database.Cursor
 import com.dicoding.helfani.mysubmissionfinal.db.DatabaseContract.UserColumns
+import com.dicoding.helfani.mysubmissionfinal.entity.UserItems
 
 object MappingHelper {
 
