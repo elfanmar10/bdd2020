@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dicoding.helfani.mysubmission2.MainActivity.Companion.GITHUB_TOKEN
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -26,7 +27,6 @@ class FollowingFragment : Fragment() {
     companion object {
         private val ARG_USERNAME = "username"
         val TAG = MainActivity::class.java.simpleName
-		const val GITHUB_TOKEN = "BuildConfig.GITHUB_TOKEN"
 
         fun newInstance(username: String?): FollowingFragment {
             val fragment = FollowingFragment()

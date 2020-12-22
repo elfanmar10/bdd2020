@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         val TAG = MainActivity::class.java.simpleName
+        const val GITHUB_TOKEN = "BuildConfig.GITHUB_TOKEN"
     }
 
     private lateinit var adapter: UserAdapter

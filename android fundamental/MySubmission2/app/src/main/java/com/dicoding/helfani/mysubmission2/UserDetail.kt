@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.item_user.tv_username
 import UserItems
 import android.util.Log
 import android.view.View
+import com.dicoding.helfani.mysubmission2.MainActivity.Companion.GITHUB_TOKEN
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -21,7 +22,6 @@ class UserDetail : AppCompatActivity() {
     companion object {
         val TAG = UserDetail::class.java.simpleName
         const val EXTRA_USER = "extra_user"
-		const val GITHUB_TOKEN = "BuildConfig.GITHUB_TOKEN"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
