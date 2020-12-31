@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 class FavoriteUser : AppCompatActivity() {
 
     private lateinit var adapter: FavoriteAdapter
+	//private lateinit var favHelper : UserHelper
 
     companion object {
         private const val EXTRA_STATE = "EXTRA_STATE"
@@ -31,6 +32,9 @@ class FavoriteUser : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite_user)
+		
+		//favHelper= UserHelper.getInstance(applicationContext)
+        //favHelper.open()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle(R.string.list_favorite_users)
@@ -71,6 +75,7 @@ class FavoriteUser : AppCompatActivity() {
             progressBarFavorite.visibility = View.VISIBLE
             val deferredUsers = async (Dispatchers.IO) {
                 //val cursor = userHelper.queryAll()
+				
                 // CONTENT_URI = content://com.dicoding.helfani.mysubmissionfinal/favorite
                 val cursor = contentResolver.query(CONTENT_URI, null, null, null, null)
                 MappingHelper.mapCursorToArrayList(cursor)

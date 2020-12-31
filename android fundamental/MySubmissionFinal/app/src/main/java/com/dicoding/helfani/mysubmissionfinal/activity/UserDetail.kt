@@ -27,6 +27,7 @@ import org.json.JSONObject
 
 class UserDetail : AppCompatActivity() {
 
+    //private lateinit var favHelper : UserHelper
     private var user: UserItems? = null
     private var statusFavoriteUser = false
 
@@ -41,6 +42,9 @@ class UserDetail : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_detail)
+		
+		//favHelper= UserHelper.getInstance(applicationContext)
+        //favHelper.open()
 
         val actionBar = supportActionBar
 
@@ -60,6 +64,16 @@ class UserDetail : AppCompatActivity() {
         tabs.setupWithViewPager(view_pager)
 
         supportActionBar?.elevation = 0f
+		
+		// cek user favorite menggunakan helper sqlite
+		/*
+		val isFav = favHelper.queryById(user.id.toString())
+
+        if (isFav.moveToNext()){
+            statusFavorite = true
+            setStatusFavorite(statusFavorite)
+        }
+		*/
 
         // Uri yang di dapatkan disini akan digunakan untuk ambil data dari provider
         // content://com.dicoding.helfani.mysubmissionfinal/favorite/id
@@ -68,7 +82,7 @@ class UserDetail : AppCompatActivity() {
 
         val isFav = contentResolver.query(uriWithid, null, null, null, null)
 
-       if (isFav != null && isFav.moveToFirst()) {
+        if (isFav != null && isFav.moveToFirst()) {
            user = MappingHelper.mapCursorToObject(isFav)
            isFav.close()
            statusFavoriteUser = true
@@ -141,6 +155,8 @@ class UserDetail : AppCompatActivity() {
                             values.put(UserColumns.FOLLOWERS, userItems.followers)
                             values.put(UserColumns.FOLLOWING, userItems.following)
                             values.put(UserColumns.REPOSITORY, userItems.repository)
+							
+							//favHelper.insert(values)
 
                             // Gunakan content uri untuk insert
                             //  content://com.dicoding.helfani.mysubmissionfinal/favorite
@@ -155,6 +171,9 @@ class UserDetail : AppCompatActivity() {
 
 
                         }  else {
+						
+							//	favHelper.deleteById(userItems.id.toString())
+							
                             // Gunakan uriWithId untuk delete
                             // content://com.dicoding.helfani.mysubmissionfinal/favorite/id
                             contentResolver.delete(uriWithid, null, null)
