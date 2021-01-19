@@ -1,0 +1,13 @@
+{
+  "movies": [
+    {
+      "movieId": "m01",
+      "title": "A Star Is Born (2018)",
+	  "date": "10/05/2018",
+	  "genre": "Romance Music",
+	  "director": "Bradley Cooper",
+      "overview": "Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even as Ally's career takes off, the personal side of their relationship is breaking down, as Jack fights an ongoing battle with his own internal demons.",
+      "imagePath": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wrFpXMNBRj2PBiN4Z5kix51XaIZ.jpg"
+    }
+  ]
+}
