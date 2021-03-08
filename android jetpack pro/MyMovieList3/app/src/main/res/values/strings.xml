@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">My Movie List</string>
+    <string name="title_activity_detail_movie">Detail Movie</string>
+    <string name="title_activity_detail_tvshow">Detail TV Show</string>
+    <string name="home">Home</string>
+    <string name="movie">Movie</string>
+    <string name="tvshow">TV Show</string>
+    <string name="title">Judul</string>
+    <string name="date">Tanggal</string>
+    <string name="genre">Genre</string>
+    <string name="director">Director</string>
+    <string name="creator">Creator</string>
+    <string name="overview">Overview</string>
+    <string name="share_text">Saksikan film %s di layanan streaming favorit anda.</string>
+    <string name="favorite">Favorite</string>
+    <string name="setting">Setting</string>
+    <string name="message_undo">Batalkan menghapus item sebelumnya?</string>
+    <string name="message_ok">OK</string>
+</resources>
